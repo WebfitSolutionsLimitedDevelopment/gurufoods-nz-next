@@ -81,6 +81,7 @@ const Navigation = ({ scrolled }) => {
             data-testid="mobile-menu-btn"
             className="md:hidden p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <span className={`w-full h-0.5 bg-[#1A1A1A] transition-all ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
