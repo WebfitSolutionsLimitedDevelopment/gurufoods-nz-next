@@ -1,34 +1,98 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Guru Foods NZ - Custom Styles */
+
+/* Reset and base */
+.App {
+  overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Image loading placeholder */
+img {
+  background-color: #E8DCC4;
 }
 
-.App-link {
-    color: #61dafb;
+/* Custom selection color */
+::selection {
+  background-color: #F2A900;
+  color: #1A1A1A;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #F2A900;
+  outline-offset: 2px;
+}
+
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .font-playfair {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Hero section responsive */
+@media (max-width: 768px) {
+  section[data-testid="hero-section"] h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* WhatsApp button hover effect */
+[data-testid="sticky-whatsapp-btn"]:hover {
+  box-shadow: 0 0 0 8px rgba(37, 211, 102, 0.3);
+}
+
+/* Product card hover */
+.hover-scale {
+  overflow: hidden;
+}
+
+.hover-scale img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover img {
+  transform: scale(1.05);
+}
+
+/* Navigation link underline effect */
+nav a[href^="#"]::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #F2A900;
+  transition: width 0.3s ease;
+}
+
+nav a[href^="#"]:hover::after {
+  width: 100%;
+}
+
+nav a[href^="#"] {
+  position: relative;
+}
+
+/* Inspiration gallery overlay */
+[data-testid^="inspiration-"] .group-hover\:bg-black\/50 {
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+/* Footer logo invert for dark background */
+footer img {
+  filter: brightness(0) invert(1);
 }
