@@ -3,7 +3,7 @@
 ## Project Overview
 **Brand:** Guru Foods NZ  
 **Type:** Commercial Marketing Website  
-**Purpose:** Brand trust builder + WhatsApp enquiry generator  
+**Tech Stack:** Next.js 16 + TypeScript + Tailwind CSS v4  
 **Date:** January 2026
 
 ## Core Message
@@ -22,11 +22,13 @@
 - NZ-made positioning
 - Premium, appetising visual design
 - Mobile responsive
-- Accessibility compliant
+- SEO-ready with Next.js App Router
 
 ## What's Been Implemented (Jan 2026)
 
-### ✅ Phase 1 - MVP Complete
+### ✅ Phase 1 - MVP Complete (Modern Stack)
+- [x] Next.js 16 with App Router & TypeScript
+- [x] Tailwind CSS v4
 - [x] Hero Section with prominent WhatsApp CTA
 - [x] Marquee trust badges (100% Vegetarian, NZ Made, Gelatin Free, etc.)
 - [x] Why Choose Us section with trust indicators
@@ -37,14 +39,42 @@
 - [x] Contact section with dual CTAs (customer + wholesale)
 - [x] Footer with navigation links
 - [x] Sticky WhatsApp button (bottom-right)
-- [x] Mobile responsive navigation
+- [x] Mobile responsive navigation with hamburger menu
 - [x] Premium design with Playfair Display + Outfit fonts
 - [x] Brand colors (Gold #F2A900, Charcoal #1A1A1A, Bone White #FAF9F6)
+- [x] Next.js Image optimization
+- [x] SEO metadata
 
 ### Technical Stack
-- Frontend: React 19 + Tailwind CSS
+- Frontend: Next.js 16 + React 19 + TypeScript
+- Styling: Tailwind CSS v4
+- Icons: Lucide React
 - Backend: FastAPI (minimal, for future features)
 - Database: MongoDB (configured, not yet used)
+
+## File Structure
+```
+/app/frontend/src/
+├── app/
+│   ├── globals.css
+│   ├── layout.tsx (fonts, metadata)
+│   └── page.tsx (client component)
+├── components/
+│   ├── Navigation.tsx
+│   ├── HeroSection.tsx
+│   ├── MarqueeSection.tsx
+│   ├── WhyChooseSection.tsx
+│   ├── ProductsSection.tsx
+│   ├── InspirationSection.tsx
+│   ├── WhereToBuySection.tsx
+│   ├── AboutSection.tsx
+│   ├── ContactSection.tsx
+│   ├── Footer.tsx
+│   ├── StickyWhatsApp.tsx
+│   └── index.ts
+└── lib/
+    └── constants.ts
+```
 
 ## Prioritized Backlog
 
@@ -54,13 +84,11 @@
 - [ ] Product catalog management (admin)
 - [ ] Store locator with actual locations
 - [ ] Google Analytics integration
-- [ ] SEO meta tags optimization
 
 ### P2 - Medium Priority
 - [ ] Customer testimonials section
 - [ ] Recipe blog/articles
 - [ ] Newsletter signup
-- [ ] WhatsApp business API integration
 
 ### P3 - Nice to Have
 - [ ] Multi-language support (Hindi/Gujarati)

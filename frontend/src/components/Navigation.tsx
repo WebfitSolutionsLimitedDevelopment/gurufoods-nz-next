@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Menu, X } from "lucide-react";
 import { LOGO_URL, WHATSAPP_LINK, NAV_LINKS } from "@/lib/constants";
 
 export function Navigation() {
@@ -14,6 +14,14 @@ export function Navigation() {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    setMobileMenuOpen(prev => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setMobileMenuOpen(false);
   }, []);
 
   return (
@@ -66,28 +74,35 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             data-testid="mobile-menu-btn"
-            className="md:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 z-50"
+            onClick={toggleMenu}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
           >
-            <div className="w-6 h-5 flex flex-col justify-between">
-              <span className={`w-full h-0.5 bg-[#1A1A1A] transition-all ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
-              <span className={`w-full h-0.5 bg-[#1A1A1A] transition-all ${mobileMenuOpen ? "opacity-0" : ""}`} />
-              <span className={`w-full h-0.5 bg-[#1A1A1A] transition-all ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-            </div>
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6 text-[#1A1A1A]" />
+            ) : (
+              <Menu className="w-6 h-6 text-[#1A1A1A]" />
+            )}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div data-testid="mobile-menu" className="md:hidden py-4 border-t border-[#1A1A1A]/10 bg-[#FAF9F6]">
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div 
+          data-testid="mobile-menu" 
+          className="md:hidden absolute top-20 left-0 right-0 bg-[#FAF9F6] border-t border-[#1A1A1A]/10 shadow-lg"
+        >
+          <div className="max-w-7xl mx-auto px-6 py-6">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block py-3 font-outfit text-[#1A1A1A] hover:text-[#F2A900] transition-colors"
+                onClick={closeMenu}
+                className="block py-3 font-outfit text-lg text-[#1A1A1A] hover:text-[#F2A900] transition-colors"
               >
                 {link.name}
               </Link>
@@ -96,14 +111,15 @@ export function Navigation() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={closeMenu}
               className="inline-flex items-center gap-2 mt-4 bg-[#F2A900] text-[#1A1A1A] font-medium px-6 py-3 rounded-full"
             >
               <MessageCircle className="w-4 h-4" />
               Order Now
             </Link>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 }
