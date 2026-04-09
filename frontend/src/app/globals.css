@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+:root {
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-outfit: 'Outfit', system-ui, sans-serif;
+  
+  --color-bone: #FAF9F6;
+  --color-cream: #E8DCC4;
+  --color-charcoal: #1A1A1A;
+  --color-gold: #F2A900;
+  --color-gold-dark: #D99700;
+  --color-sage: #3A4F39;
+  --color-gray: #4B4B4B;
+  --color-whatsapp: #25D366;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bone);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-outfit {
+  font-family: var(--font-outfit);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bone);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* WhatsApp pulse */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  50% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+}
+
+.animate-pulse-whatsapp {
+  animation: pulse-gold 2s infinite;
+}
+
+/* Glass effect */
+.glass-effect {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(250, 249, 246, 0.85);
+}
+
+/* Hover scale for images */
+.hover-scale {
+  overflow: hidden;
+}
+
+.hover-scale img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover img {
+  transform: scale(1.05);
+}
+
+/* Color utility classes */
+.bg-bone { background-color: #FAF9F6; }
+.bg-cream { background-color: #E8DCC4; }
+.bg-charcoal { background-color: #1A1A1A; }
+.bg-gold { background-color: #F2A900; }
+.bg-gold-dark { background-color: #D99700; }
+.bg-whatsapp { background-color: #25D366; }
+
+.text-bone { color: #FAF9F6; }
+.text-cream { color: #E8DCC4; }
+.text-charcoal { color: #1A1A1A; }
+.text-gold { color: #F2A900; }
+.text-gray-custom { color: #4B4B4B; }
+
+.border-charcoal { border-color: #1A1A1A; }
+.border-gold { border-color: #F2A900; }

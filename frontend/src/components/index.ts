@@ -1,0 +1,11 @@
+export { Navigation } from "./Navigation";
+export { HeroSection } from "./HeroSection";
+export { MarqueeSection } from "./MarqueeSection";
+export { WhyChooseSection } from "./WhyChooseSection";
+export { ProductsSection } from "./ProductsSection";
+export { InspirationSection } from "./InspirationSection";
+export { WhereToBuySection } from "./WhereToBuySection";
+export { AboutSection } from "./AboutSection";
+export { ContactSection } from "./ContactSection";
+export { Footer } from "./Footer";
+export { StickyWhatsApp } from "./StickyWhatsApp";
